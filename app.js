@@ -27,11 +27,9 @@ app.use((req, res, next) => {
 app.use(authUserRouter)
 app.use("/site", siteRouter)
 
-if(!process.env.DEVMODE){
 app.get("*", (req, res) => {
     res.send("404 Page Not Found")
-});
-}
+})
 app.listen(3000, () => { console.log("app listening on port 3000!")})
 
 module.exports = app;
