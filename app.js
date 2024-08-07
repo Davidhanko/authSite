@@ -20,8 +20,8 @@ app.use(session({
     }),
     secret: "ILOVETHISVERYSECRETKEYYOUSHOULDNOTSHAREITWITHANYONEELSELIKEFRWHATAREYOUDOINGHERESTOPPEEKINGINTOMYCODEYOUCREEPTHISCODEINTHELONGRUNDOESNTMATTERANYWAYUSEDOTENVNEXTTIME",
     resave: false,
-    cookie: { maxAge: 24 * 60 * 60 * 1000 } // 1 days
-    // Insert express-session options here
+    cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 1 days
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
