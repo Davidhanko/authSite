@@ -4,9 +4,10 @@ const passport = require("./middleware/passport");
 const app = express();
 const {join, resolve} = require("path");
 const flash = require("connect-flash");
-require('dotenv').config({ path: 'dotenv.env' })
+require('dotenv').config({ path: '/dotenv.env' })
 
 const authUserRouter = require("./routers/authUserRouter");
+const siteRouter = require("./routers/siteRouter");
 
 app.set("views", './views')
 app.set("view engine", "ejs")
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
 });
 
 app.use(authUserRouter)
-
+app.use("/site", siteRouter)
 
 if(!process.env.DEVMODE){
 app.get("*", (req, res) => {

@@ -1,10 +1,18 @@
 <html lang="en">
+<%- include('partial/navbar') %>
 <head>
     <title>BOARD</title>
-<link rel="stylesheet" href="board.css">
+    <link rel="stylesheet" href="/stylesheets/board.css">
 </head>
 <body>
-<h1>Board</h1>
+<h1><%= typeof currentUser !== 'undefined' ? `Welcome, ${currentUser.username}` : 'Board' %></h1>
 
+<% posts.forEach(function(post) { %>
+    <div class="post">
+        <div class="post-title"><%= post.title %></div>
+        <div class="post-content"><%= post.content %></div>
+        <div class="post-footer">Posted by <%= post.username %> at <%= post.date %></div>
+    </div>
+<% }) %>
 </body>
 </html>

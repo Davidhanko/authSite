@@ -44,4 +44,8 @@ router.post('/login', function(req, res, next) {
     })(req, res, next);
 });
 
+router.get('/board', (req, res) => {
+    res.redirect('/site/board');
+})
+
 module.exports = router;

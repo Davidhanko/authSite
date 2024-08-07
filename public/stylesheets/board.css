@@ -1,0 +1,44 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #e9ecef;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.post {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.post-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.post-content {
+    margin-top: 10px;
+}
+
+.post-footer {
+    color: #6c757d;
+    font-size: 14px;
+    margin-top: 20px;
+}

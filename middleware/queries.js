@@ -21,8 +21,25 @@ async function getUserById(id){
     return rows[0];
 }
 
+async function createPost(title, content, author){
+    const SQL = "INSERT INTO posts (title, message, author, date) VALUES ($1, $2, $3, 'NOW()') RETURNING *";
+    const values = [title, content, author];
+    const {rows} = await db.query(SQL, values);
+    return rows[0];
+}
+
+async function getPosts(){
+    const SQL = "SELECT posts.*, users.username FROM posts" +
+        " JOIN users ON posts.author = users.id" +
+        " ORDER BY posts.date DESC";
+    const {rows} = await db.query(SQL);
+    return rows;
+}
+
 module.exports = {
     insertUser,
     getUserByUsername,
-    getUserById
+    getUserById,
+    createPost,
+    getPosts
 }
