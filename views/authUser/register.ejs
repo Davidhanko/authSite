@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <title>
+        REGISTER
+    </title>
+</head>
+<body>
+<h1>REGISTER</h1>
+<% if (typeof errors !== 'undefined' && errors) { %>
+    <% errors.forEach(function(error) { %>
+        <p><%= error.msg %></p>
+    <% }) %>
+<% } %>
+<form action="" method="post">
+    <label>
+        First Name:
+        <input type="text" name="firstname" required>
+    </label>
+    <br>
+    <label>
+        Last Name:
+        <input type="text" name="lastname" required>
+    </label>
+    <br>
+    <label>
+        Username:
+        <input type="text" name="username" required>
+    </label>
+    <br>
+    <label>
+        Password:
+        <input type="password" name="password" required>
+    </label>
+    <br>
+    <label>
+        Confirm Password:
+        <input type="password" name="confirmPassword" required>
+    </label>
+    <br>
+    <input type="submit" value="Register">
+</form>
+<a href="/login">Login</a>
+</body>
+</html>

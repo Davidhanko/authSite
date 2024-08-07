@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <title>
+        Login
+    </title>
+</head>
+<body>
+    <h1>LOGIN</h1>
+    <% if (messages.error) { %>
+        <div class="alert alert-danger"><%= messages.error %></div>
+    <% } %>
+    <form action="/login" method="post">
+        <label>
+            Username:
+            <input type="text" name="username" required value="<%= messages.username || '' %>">
+        </label>
+        <br>
+        <label>
+            Password:
+            <input type="password" name="password" required>
+        </label>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+<a href="register">Register</a>
+</body>
+</html>
