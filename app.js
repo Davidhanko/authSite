@@ -12,7 +12,7 @@ const siteRouter = require("./routers/siteRouter");
 app.set("views", './views')
 app.set("view engine", "ejs")
 
-app.use(session({secret: "cats", resave: false, saveUninitialized: false}))
+app.use(session({secret: "iwouldlovecatsbutduetosomespecificpersonIdonotsadly", resave: false, saveUninitialized: false}))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

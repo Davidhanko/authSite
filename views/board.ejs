@@ -9,10 +9,15 @@
 
 <% posts.forEach(function(post) { %>
     <div class="post">
-        <div class="post-title"><%= post.title %></div>
-        <div class="post-content"><%= post.content %></div>
-        <div class="post-footer">Posted by <%= post.username %> at <%= post.date %></div>
+        <div class="post-title"><a href="post/<%=post.id%>"><%= post.title %></a></div>
+        <div class="post-footer">
+            <%= typeof currentUser !== 'undefined' && currentUser.status !== 'outsider' ?
+                    `Posted by ${post.username} at ${post.date}` : '' %>        </div>
+        <% if(typeof currentUser !== 'undefined' && currentUser.status === "admin" ) { %>
+            <form action='/site/delete/post/<%= post.id %>' method="POST">
+                <input type="submit" value="Delete">
+            </form>
+        <% } })%>
     </div>
-<% }) %>
 </body>
 </html>

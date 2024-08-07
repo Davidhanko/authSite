@@ -48,4 +48,15 @@ router.get('/board', (req, res) => {
     res.redirect('/site/board');
 })
 
+router.post('/logout', function(req, res, next){
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/site/board');
+    });
+});
+
+router.post('/upgrade',
+    body('upgradePassword').trim().escape().equals('Lennox').withMessage("WRONG PASSWORD"),
+    controller.upgradeUser)
+
 module.exports = router;

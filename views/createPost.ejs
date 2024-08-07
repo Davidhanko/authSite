@@ -5,11 +5,13 @@
 <body>
 <%- include('partial/navbar')%>
 <h1>Create post</h1>
+
 <% if (typeof errors !== 'undefined' && errors) { %>
     <% errors.forEach(function(error) { %>
         <p><%= error.msg %></p>
     <% }) %>
 <% } %>
+<%if (currentUser.status !== 'outsider'){%>
 <form action="" method="POST">
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" required>
@@ -19,5 +21,8 @@
 
     <button type="submit">Create</button>
 </form>
+<%}else{%>
+    <p>Only members and admins can create posts, you are an outsider</p>
+<%}%>
 </body>
 </html>

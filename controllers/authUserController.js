@@ -24,7 +24,27 @@ async function registerPost(req, res) {
     }
 }
 
+async function upgradeUser(req,res){
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.render("profile", { errors: errors.array(), currentUser: req.user});
+    }
+    try {
+        const user = await db.upgradeUser(req.user.id);
+        req.login(user, function(err) {
+            if (err) {
+                console.log(err);
+                return res.send("An error occurred")
+            }
+            res.redirect("/board");
+        })
+    } catch (err) {
+        console.log(err);
+        res.send("An error occurred");
+    }
+}
 
 module.exports = {
     registerPost,
+    upgradeUser
 }

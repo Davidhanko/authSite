@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <title>
+        <%= currentUser.username %>
+    </title>
+</head>
+<%- include('partial/navbar')%>
+<body>
+    <h1>YOUR PROFILE, <%=currentUser.username%></h1>
+    <h2>Your status: <%=currentUser.status%></h2>
+    <% if (errors) { %>
+        <% errors.forEach(function(error) { %>
+            <p><%= error.msg %></p>
+        <% }); %>
+    <% } %>
+    <form action="/upgrade" method="POST">
+        <label>
+            <input type="text" name="upgradePassword"
+                   id="upgradePassword"
+                   placeholder="Enter special password to upgrade">
+        </label>
+        <button type="submit">Upgrade</button>
+    </form>
+    <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
