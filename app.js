@@ -12,7 +12,17 @@ const siteRouter = require("./routers/siteRouter");
 app.set("views", './views')
 app.set("view engine", "ejs")
 
-app.use(session({secret: "iwouldlovecatsbutduetosomespecificpersonIdonotsadly", resave: false, saveUninitialized: false}))
+app.set('trust proxy', 1);
+app.use(session({
+    store: new (require('connect-pg-simple')(session))({
+        pool: require("./middleware/pool"),
+        tableName : 'user_sessions'
+    }),
+    secret: "ILOVETHISVERYSECRETKEYYOUSHOULDNOTSHAREITWITHANYONEELSELIKEFRWHATAREYOUDOINGHERESTOPPEEKINGINTOMYCODEYOUCREEPTHISCODEINTHELONGRUNDOESNTMATTERANYWAYUSEDOTENVNEXTTIME",
+    resave: false,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 } // 1 days
+    // Insert express-session options here
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
